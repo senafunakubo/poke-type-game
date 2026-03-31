@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokemon Type Game</title>
+</head>
+<body>
+  <h1>{{ question }}</h1>
+    <p>Score: {{ score }}</p>
+
+    <form method="POST" action="/restart">
+      <button type="submit">Start Over</button>
+    </form>
+
+  {% if not result %}
+    <br>
+    <form method="POST" action="/">
+      {% for t in types %}
+        <button type="submit" name="user_answer" value="{{ t }}">
+          {{ t }}
+        </button>
+      {% endfor %}
+    </form>
+    <br>
+  {% endif %}
+
+  {% if not result %}
+  <form method="POST" action="/hint">
+    <button type="submit">Show Hint</button>
+  </form>
+{% endif %}
+
+  {% if result %}
+    <p>{{ result }}</p>
+
+    <form method="POST" action="/next">
+      <button type="submit">Next Question</button>
+    </form>
+  {% endif %}
+</body>
+</html>
