@@ -1,9 +1,10 @@
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "DM Serif Display", serif;
   background: #f4f7fb;
   margin: 0;
   padding: 24px;
   color: #222;
+  font-style: normal;
 }
 
 .container {
@@ -53,8 +54,12 @@ button {
 }
 
 button:hover {
-  opacity: 0.92;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+button:active {
+  transform: scale(0.97);
 }
 
 .type-btn {
@@ -85,4 +90,14 @@ button:hover {
   background: #f8fafc;
   padding: 16px;
   border-radius: 12px;
+}
+
+.correct {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.wrong {
+  background: #fee2e2;
+  color: #991b1b;
 }
