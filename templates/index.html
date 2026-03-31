@@ -3,39 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>Pokemon Type Game</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h1>{{ question }}</h1>
-    <p>Score: {{ score }}</p>
+  <div class="container">
+    <h1>{{ question }}</h1>
+    <p class="score">Score: {{ score }}</p>
 
-    <form method="POST" action="/restart">
-      <button type="submit">Start Over</button>
+    <form method="POST" action="/restart" class="top-actions">
+      <button type="submit" class="secondary-btn">Start Over</button>
     </form>
 
-  {% if not result %}
-    <br>
-    <form method="POST" action="/">
-      {% for t in types %}
-        <button type="submit" name="user_answer" value="{{ t }}">
-          {{ t }}
-        </button>
-      {% endfor %}
-    </form>
-    <br>
-  {% endif %}
+    {% if not result %}
+      <form method="POST" action="/" class="answer-form">
+        <div class="button-grid">
+          {% for t in types %}
+            <button type="submit" name="user_answer" value="{{ t }}" class="type-btn">
+              {{ t }}
+            </button>
+          {% endfor %}
+        </div>
+      </form>
 
-  {% if not result %}
-  <form method="POST" action="/hint">
-    <button type="submit">Show Hint</button>
-  </form>
-{% endif %}
+      <form method="POST" action="/hint">
+        <button type="submit" class="hint-btn">Show Hint</button>
+      </form>
+    {% endif %}
 
-  {% if result %}
-    <p>{{ result }}</p>
+    {% if result %}
+      <p class="result">{{ result }}</p>
 
-    <form method="POST" action="/next">
-      <button type="submit">Next Question</button>
-    </form>
-  {% endif %}
+      <form method="POST" action="/next">
+        <button type="submit" class="next-btn">Next Question</button>
+      </form>
+    {% endif %}
+  </div>
 </body>
 </html>
